@@ -21,7 +21,7 @@ public class HelloController {
 
     @RequestMapping("hi")
     public String hi(Model model, HttpServletRequest request) {
-        request.setAttribute("name","布鲁克斯");
+        request.setAttribute("name","布鲁克斯-Josh");
         return "index";
     }
 }
