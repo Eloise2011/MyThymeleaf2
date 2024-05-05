@@ -1,0 +1,19 @@
+<!Doctype HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Expression Variables</title>
+</head>
+<body>
+<p th:text="${Nationality}"></p>
+<p th:text="${VisaType}"></p>
+
+<p th:text="${student.id}">id</p>
+<p th:text="${student.name}">name</p>
+<p th:text="${student.email}">email</p>
+<p th:text="${student.age}">age</p>
+<p th:text="${student.gender}">gender - "public field without Getter-Setter in VO"</p>
+<div>School Info: (引用类型默认是填充的toString方法的内容) <span th:text="${student.school}"></span></div>
+<div>学校名称:<span th:text="${student.school.name}">School Name</span>, 学校地址: <span th:text="${student.school.address}">School Address</span> </div>
+</body>
+</html>
