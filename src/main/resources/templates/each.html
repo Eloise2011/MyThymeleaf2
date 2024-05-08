@@ -1,0 +1,157 @@
+<!Doctype HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title>th:each 演示</title>
+    <style>
+        /* 定义表格样式 */
+        #outer-table {
+            border-collapse: collapse;
+            border: 10px solid red;
+            width: 100%;
+        }
+
+        #outer-table th {
+            border: 8px solid green;
+            padding: 8px;
+            text-align: center;
+        }
+
+        #outer-table td {
+            border: 8px solid yellow;
+            padding: 8px;
+            text-align: center;
+        }
+
+        #inner-table {
+            border-collapse: collapse;
+            border: 5px dot-dash purple;
+            width: 100%;
+        }
+
+        #inner-table th {
+            border: 3px solid blue;
+            padding: 8px;
+            text-align: left;
+        }
+
+        #inner-table td {
+            border: 3px solid salmon;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<h1>1. each 循环List</h1>
+<table>
+    <thead>
+    <tr>
+        <th th:text="序号"></th>
+        <th th:text="'校名'"></th>
+        <th th:text="'地址'"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="it,itStat:${schoolList}">
+        <th scope="row" th:text="${itStat.count}"></th>
+        <td th:text="${it.name}"></td>
+        <td th:text="${it.address}"></td>
+    </tr>
+    </tbody>
+</table>
+<h1>2. each 循环Map</h1>
+<div>
+    <p th:each="m:${stuMap}">
+        <span th:text="${m.key}"></span>
+        <span th:text="${m.value}"></span>
+    </p>
+</div>
+
+<!-- 展现一: 循环 List<Map<String, Colleagues>>  以嵌套表格的形式展示   -->
+<table id="outer-table">
+    <thead>
+    <tr>
+        <th th:text="Map-序号"></th>
+        <th th:text="Map-值"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item, itemStat:${colListMap}">
+        <th scope="row" th:text="${itemStat.count}"></th>
+        <td>
+            <!-- Inner table -->
+            <table id="inner-table">
+                <thead>
+                <tr>
+                    <th th:text="Hero-序号"></th>
+                    <th th:text="Hero-人物"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:scope="row" th:each="i,iStat:${item}">
+                    <td th:text="${i.key}"></td>
+                    <td th:text="${i.value}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+<!-- 展现二: 循环 List<Map<String, Colleagues>>  以列表形式展现   -->
+<ul th:each="outerItem,outerItemStat:${colListMap}">
+    <li th:each="entry:${outerItem}" , th:text="${entry.key}"></li>
+    <li th:each="entry:${outerItem}" , th:text="${entry.value}"></li>
+</ul>
+
+<!-- 展现三: 循环 List<Map<String, Colleagues>>  以无序列表里嵌表格展现   -->
+<ul th:each="olm,olmStat:${colListMap}">
+    <li>
+        <table th:each="entry:${olm}">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>值</th>
+            </tr>
+            </thead>
+            <tr>
+                <td th:text="${entry.key}"></td>
+                <td th:text="${entry.value}"></td>
+            </tr>
+        </table>
+    </li>
+
+</ul>
+
+<!-- 数组展示 -->
+<ul>
+    <li th:each="bk:${myBooks}" th:text="${bk}">book name</li>
+</ul>
+
+<div>
+    <p>
+    <h1>单选</h1>
+    <select th:multiple="${isMultiple}">
+        <option th:each="item:${areaCode}"
+                th:value="${item.key}"
+                th:text="${item.value}"
+                th:selected="${choice} eq ${item.value}">
+        </option>
+    </select>
+    <h1>多选:</h1>
+    <select th:multiple="${isMultiple2}">
+        <option th:each="item:${areaCode2}"
+                th:value="${item.key}"
+                th:text="${item.value}"
+                th:selected="${choice2.contains(item.value)}">
+        </option>
+    </select>
+    </p>
+</div>
+
+
+</body>
+</html>

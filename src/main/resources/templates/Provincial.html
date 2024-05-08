@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>湖北和湖南省市区级联下拉框</title>
+    <script>
+        // 定义湖北和湖南省份数据
+        var provinces = ["湖北省", "湖南省"]; // 省份数据
+        var cities = {
+            "湖北省": ["武汉市", "黄石市", "十堰市", "宜昌市"],
+            "湖南省": ["长沙市", "株洲市", "湘潭市", "衡阳市"]
+        }; // 城市数据，以省份为键，值为城市数组
+        var areas = {
+            "武汉市": ["江岸区", "江汉区", "硚口区", "汉阳区"],
+            "黄石市": ["黄石港区", "西塞山区", "下陆区", "铁山区"],
+            "十堰市": ["茅箭区", "张湾区", "郧阳区", "丹江口市"],
+            "宜昌市": ["西陵区", "伍家岗区", "点军区", "猇亭区"],
+            "长沙市": ["芙蓉区", "天心区", "岳麓区", "开福区"],
+            "株洲市": ["荷塘区", "芦淞区", "石峰区", "天元区"],
+            "湘潭市": ["雨湖区", "岳塘区", "湘乡市", "韶山市"],
+            "衡阳市": ["珠晖区", "雁峰区", "石鼓区", "蒸湘区"]
+        }; // 区县数据，以城市为键，值为区县数组
+
+        // 初始化省份下拉框
+        function initProvince() {
+            var selectProvince = document.getElementById("province");
+            for (var i = 0; i < provinces.length; i++) {
+                var option = document.createElement("option");
+                option.text = provinces[i];
+                selectProvince.add(option);
+            }
+        }
+
+        // 更新城市下拉框
+        function updateCity() {
+            var selectProvince = document.getElementById("province");
+            var selectCity = document.getElementById("city");
+            var province = selectProvince.options[selectProvince.selectedIndex].text;
+            selectCity.options.length = 0;
+            for (var i = 0; i < cities[province].length; i++) {
+                var option = document.createElement("option");
+                option.text = cities[province][i];
+                selectCity.add(option);
+            }
+            updateArea();
+        }
+
+        // 更新区县下拉框
+        function updateArea() {
+            var selectCity = document.getElementById("city");
+            var selectArea = document.getElementById("area");
+            var city = selectCity.options[selectCity.selectedIndex].text;
+            selectArea.options.length = 0;
+            for (var i = 0; i < areas[city].length; i++) {
+                var option = document.createElement("option");
+                option.text = areas[city][i];
+                selectArea.add(option);
+            }
+        }
+
+        // 页面加载完成后执行初始化操作
+        window.onload = function() {
+            initProvince();
+            updateCity();
+        };
+    </script>
+</head>
+<body>
+
+<select id="province" onchange="updateCity()">
+    <!-- 省份下拉框 -->
+</select>
+<select id="city" onchange="updateArea()">
+    <!-- 城市下拉框 -->
+</select>
+<select id="area">
+    <!-- 区县下拉框 -->
+</select>
+
+</body>
+</html>

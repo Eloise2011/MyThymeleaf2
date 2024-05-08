@@ -1,0 +1,19 @@
+<!Doctype HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>布尔表达式</title>
+</head>
+<body>
+<h1 style="color: #c7254e">注意⚠️ th:if标签和th:text表现的不同</h1>
+<p th:text="true">th:text, 为true时,该标签内容会被true填充</p> <br />
+<p th:if="true">th:if, 为true时,才显示该标签内容</p> <br />
+<p th:if="${age} >= 18">is adult</p> <br />
+<p th:if="${age} &lt; 18">is child</p> <br />
+<p th:if="${married} == true">is Married</p> <br />
+<p th:if="${married} == true">still a Bachlor</p> <br />
+<p th:if="${married} == true and ${age} &gt; 17">Got Married at a legal age</p> <br />
+<p th:if="${married} == false and ${age} < 18">Illegally Married</p> <br />
+
+</body>
+</html>

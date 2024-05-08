@@ -13,6 +13,19 @@ public class Student {
     public  String gender;
     private School school;
 
+    public Student() {
+    }
+
+
+    public Student(Integer id, String name, String email, Integer age, String gender, School school) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.age = age;
+        this.gender = gender;
+        this.school = school;
+    }
+
     public String getGender() {
         return gender;
     }

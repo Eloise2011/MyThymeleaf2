@@ -1,0 +1,31 @@
+<!Doctype HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>th:attr属性赋值演示</title>
+    <script type="text/javascript">
+        function fun1() {
+            alert("模拟登录, 成功!");
+        }
+    </script>
+</head>
+<body>
+
+<div>
+    <span>
+        <p>
+            th:attr 属性赋值由于其语法复杂性和不优雅已经不被推荐使用,而是使用各自属性直接进行赋值. <br />
+                当使用其进行多属性赋值时,需要注意⚠️语法: <br />
+                正确✅: th:attr="value=1, alt='报错提示', src='路径'" <br />
+                错误❌: th:attr="value=1"  th:attr="alt='报错提示'" th:attr=src='路径'"<br />
+        </p>
+    </span>
+</div>
+
+<form action="/helloAttr.html" method="post" th:attr="action=${myAction}">
+    账号:<input type="text" name="username"> <br />
+    密码:<input type="password" name="password"> <br />
+    <input type="submit" value="登录" th:attr="onclick='fun1()', value=${myText}"> <br />
+</form>
+</body>
+</html>

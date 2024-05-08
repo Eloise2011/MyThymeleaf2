@@ -27,6 +27,13 @@ public class LinkController {
         return "link";
     }
 
+    /**
+     *
+     * @param model
+     * @param id
+     * @param name
+     * @return
+     */
     @RequestMapping("/link/query/{id}/{name}")
     public String linkQueried(Model model, @PathVariable Integer id, @PathVariable String name) {
         Student student = new Student();

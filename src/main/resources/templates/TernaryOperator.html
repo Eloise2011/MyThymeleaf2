@@ -1,0 +1,28 @@
+<!Doctype HTML>
+<html lang="en" xmlns:th="http://www.thykmeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title>三元运算演示</title>
+</head>
+<body>
+<h1>Thymeleaf 中的三元运算与 Java 以及 Javascript 中基本一致，如 A>B？X：Y，在 X、Y 中可以继续嵌套，只是 Thymeleaf 中需要使用括号括起来,否则会报错, 错误码3001</h1>
+
+
+<p th:text="10 &gt;5?'10大于5':'10小于5'">10和5谁大?</p>
+<p th:text="${age} ge 18?'已成年':'小屁孩一个'">法定年龄</p>
+<p th:text="${name} eq null ? null : ${name}">name 赋值了</p>
+<p th:text="${address} eq null ? null : (${address}=='北京'?'帝都':|${address},'也是山区'|)">address 赋值了</p>
+<!--可以单独打开下面一行注释看看是否报3001错误-->
+<!--<p th:text="${address} eq null ? null : ${address}=='北京'?'帝都':'山区'">address 赋值了</p>-->
+
+<!-- A>B？X：Y 省略了Y、如果A>B为false， 整个表达式为 null，标签不显示
+    根据这个逻辑下面1 ～ 4 分别显示：未登陆; 啥也不显示，3. 用户未登陆； 啥也不显示
+-->
+<p th:text="!${islogin}?'未登陆'">1. 用户未登陆</p>
+<p th:text="${isMember}?'已注册会员'">2. 用户未注册</p>
+<p th:if="!${islogin}?'未登陆'">3. 用户未登陆</p>
+<p th:if="${isMember}?'已注册会员'">4. 用户未注册</p>
+
+
+</body>
+</html>

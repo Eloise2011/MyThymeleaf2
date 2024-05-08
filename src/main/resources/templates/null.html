@@ -1,0 +1,18 @@
+<!Doctype HTML>
+<html lang="en" xmlns:th="http://www.thykmeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Null 和 空字符串</title>
+</head>
+<body>
+    <h1>Null</h1>
+    <p th:text="${myName} == null">myName 是null?</p>
+    <p th:text="${myName} == ''">myName 是空字符串?</p>
+    <p th:if="${myName}">myName 是空字符串</p>
+    <p th:if="${myName}">myName 是Null</p>
+    <p th:if="${myName} eq null ">eq 判断是否为:Null</p>
+    <p th:if="${myName} == null ">== 判断是否为:Null</p>
+    <p th:if="${myName} eq '' ">eq 判断是否为:空字符串''</p>
+    <p th:if="${myName} == '' ">== 判断是否为:空字符串''</p>
+</body>
+</html>

@@ -5,5 +5,7 @@ spring:
     prefix: classpath:/templates/
     suffix: .html
     encoding: UTF-8
+  messages:
+    basename: i18N/messages
 server:
   port: 8081

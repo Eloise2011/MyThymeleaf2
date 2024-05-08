@@ -1,0 +1,19 @@
+<!Doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8" />
+    <title>数字表达式</title>
+</head>
+<body>
+<h1 style="color: #c7254e">
+    数字文字就是：数字，算术运算也可用：+，一，*，/和%，表达式中的值可以与进行比较>，＜，>=和＜=符号，以及==和!=可以被用来检查是否相等。<br />
+    一些符合需要使用实体 gt（>），1t（<），ge（>=）， le （<=）， not （!）。还有eq(==)， neq（!=）。
+</h1>
+<p th:text="55">字面量</p>
+<p th:text="6+6">数值运算</p>
+<p th:text="6+6+'这是一个字符串'+10+20"></p>
+<p th:text="6+6+'这会不一样了'+(10+20)"></p>
+<p th:text="${n1}-${n2}"></p>
+<p th:text="130-${n2}"></p>
+</body>
+</html>
